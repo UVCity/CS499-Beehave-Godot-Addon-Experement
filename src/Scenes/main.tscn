@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3rtg1n2pymll"]
+
+[ext_resource type="PackedScene" uid="uid://b3sa7dxt46tg5" path="res://src/Nodes/Entities/Char.tscn" id="1_i4kky"]
+[ext_resource type="PackedScene" uid="uid://bqmfi8sirxblx" path="res://src/Nodes/Beehaviors/PlayingTag.tscn" id="2_pcv43"]
+
+[node name="Game of Tag" type="Node2D"]
+
+[node name="Player 1" parent="." instance=ExtResource("1_i4kky")]
+position = Vector2(64, 300)
+
+[node name="PlayingTag" parent="Player 1" instance=ExtResource("2_pcv43")]
+
+[node name="Player 2" parent="." instance=ExtResource("1_i4kky")]
+position = Vector2(1088, 300)
+
+[node name="PlayingTag" parent="Player 2" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
+blackboard = NodePath("@Node@17967")
+
+[node name="Player 3" parent="." instance=ExtResource("1_i4kky")]
+position = Vector2(564, 300)
+
+[node name="PlayingTag" parent="Player 3" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
+blackboard = NodePath("@Node@17968")

@@ -1,0 +1,34 @@
+[gd_scene load_steps=9 format=3 uid="uid://bqmfi8sirxblx"]
+
+[ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_tp1qh"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_k4j0r"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_star.gd" id="3_eabfd"]
+[ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/hunter.gd" id="4_ivxnc"]
+[ext_resource type="Script" path="res://addons/beehave/nodes/composites/sequence_reactive.gd" id="6_aq11h"]
+[ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/tagged.gd" id="6_bmbmx"]
+[ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/danger.gd" id="7_q3rt3"]
+[ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/runner.gd" id="8_rkk2r"]
+
+[node name="PlayingTag" type="Node"]
+script = ExtResource("1_tp1qh")
+
+[node name="IT or NOT" type="Node" parent="."]
+script = ExtResource("2_k4j0r")
+
+[node name="IsIt" type="Node" parent="IT or NOT"]
+script = ExtResource("3_eabfd")
+
+[node name="Hunter" type="Node" parent="IT or NOT/IsIt"]
+script = ExtResource("4_ivxnc")
+
+[node name="Tagged" type="Node" parent="IT or NOT/IsIt"]
+script = ExtResource("6_bmbmx")
+
+[node name="NotIt" type="Node" parent="IT or NOT"]
+script = ExtResource("6_aq11h")
+
+[node name="IsItNear" type="Node" parent="IT or NOT/NotIt"]
+script = ExtResource("7_q3rt3")
+
+[node name="Runner" type="Node" parent="IT or NOT/NotIt"]
+script = ExtResource("8_rkk2r")
