@@ -1,23 +1,90 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3rtg1n2pymll"]
+[gd_scene load_steps=6 format=3 uid="uid://b3rtg1n2pymll"]
 
-[ext_resource type="PackedScene" uid="uid://b3sa7dxt46tg5" path="res://src/Nodes/Entities/Char.tscn" id="1_i4kky"]
+[ext_resource type="Script" path="res://addons/beehave/blackboard.gd" id="1_j0ib2"]
 [ext_resource type="PackedScene" uid="uid://bqmfi8sirxblx" path="res://src/Nodes/Beehaviors/PlayingTag.tscn" id="2_pcv43"]
+[ext_resource type="Texture2D" uid="uid://cd7qjjpkueah0" path="res://icon.svg" id="3_e8w0i"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_047ho"]
+vertices = PackedVector2Array(486, 202, 292, -9, 1150, -6, 1156, 641, 2, 640, 3, -9, 471, 218, 260, -9)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 4, 5, 6), PackedInt32Array(6, 0, 3), PackedInt32Array(6, 5, 7)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(486, 202, 292, -9, 1150, -6, 1156, 641, 2, 640, 3, -9, 260, -9, 471, 218)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv31l"]
+size = Vector2(120, 120)
 
 [node name="Game of Tag" type="Node2D"]
 
-[node name="Player 1" parent="." instance=ExtResource("1_i4kky")]
+[node name="SceneBlackboard" type="Node" parent="."]
+script = ExtResource("1_j0ib2")
+
+[node name="SceneNavigation" type="NavigationRegion2D" parent="."]
+position = Vector2(-2, 9)
+navigation_polygon = SubResource("NavigationPolygon_047ho")
+
+[node name="Player 1" type="CharacterBody2D" parent="."]
 position = Vector2(64, 300)
+metadata/_edit_group_ = true
 
-[node name="PlayingTag" parent="Player 1" instance=ExtResource("2_pcv43")]
+[node name="PlayingTag" parent="Player 1" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
+actor_node_path = NodePath("..")
+blackboard = NodePath("../../SceneBlackboard")
 
-[node name="Player 2" parent="." instance=ExtResource("1_i4kky")]
-position = Vector2(1088, 300)
+[node name="Avatar" type="Sprite2D" parent="Player 1"]
+texture = ExtResource("3_e8w0i")
+
+[node name="Collision" type="CollisionShape2D" parent="Player 1"]
+shape = SubResource("RectangleShape2D_pv31l")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Navigation" type="NavigationAgent2D" parent="Player 1"]
+
+[node name="Player 2" type="CharacterBody2D" parent="."]
+position = Vector2(797, 557)
+metadata/_edit_group_ = true
 
 [node name="PlayingTag" parent="Player 2" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
-blackboard = NodePath("@Node@17967")
+actor_node_path = NodePath("..")
+blackboard = NodePath("../../SceneBlackboard")
 
-[node name="Player 3" parent="." instance=ExtResource("1_i4kky")]
-position = Vector2(564, 300)
+[node name="Avatar" type="Sprite2D" parent="Player 2"]
+texture = ExtResource("3_e8w0i")
+
+[node name="Collision" type="CollisionShape2D" parent="Player 2"]
+shape = SubResource("RectangleShape2D_pv31l")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Navigation" type="NavigationAgent2D" parent="Player 2"]
+
+[node name="Player 3" type="CharacterBody2D" parent="."]
+position = Vector2(729, 311)
+metadata/_edit_group_ = true
 
 [node name="PlayingTag" parent="Player 3" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
-blackboard = NodePath("@Node@17968")
+actor_node_path = NodePath("..")
+blackboard = NodePath("../../SceneBlackboard")
+
+[node name="Avatar" type="Sprite2D" parent="Player 3"]
+texture = ExtResource("3_e8w0i")
+
+[node name="Collision" type="CollisionShape2D" parent="Player 3"]
+shape = SubResource("RectangleShape2D_pv31l")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Navigation" type="NavigationAgent2D" parent="Player 3"]
+
+[node name="Player 4" type="CharacterBody2D" parent="."]
+position = Vector2(481, 83)
+metadata/_edit_group_ = true
+
+[node name="PlayingTag" parent="Player 4" node_paths=PackedStringArray("blackboard") instance=ExtResource("2_pcv43")]
+actor_node_path = NodePath("..")
+blackboard = NodePath("../../SceneBlackboard")
+
+[node name="Avatar" type="Sprite2D" parent="Player 4"]
+texture = ExtResource("3_e8w0i")
+
+[node name="Collision" type="CollisionShape2D" parent="Player 4"]
+shape = SubResource("RectangleShape2D_pv31l")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Navigation" type="NavigationAgent2D" parent="Player 4"]
