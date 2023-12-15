@@ -16,8 +16,8 @@ func tick(_hunter , _blackboard):
 	var tagged_ = _successfully_tagged(_hunter, runners);
 	
 	if tagged_:
-		_blackboard.get_value("runners").erase(tagged_)
 		_blackboard.set_value("hunter", tagged_)
+		_blackboard.get_value("runners").erase(tagged_)
 		return FAILURE
 
 # to restart tick return RUNNING

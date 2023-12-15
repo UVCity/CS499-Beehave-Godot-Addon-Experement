@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bqmfi8sirxblx"]
+[gd_scene load_steps=9 format=3 uid="uid://bqmfi8sirxblx"]
 
 [ext_resource type="Script" path="res://addons/beehave/nodes/beehave_tree.gd" id="1_tp1qh"]
 [ext_resource type="Script" path="res://addons/beehave/nodes/composites/selector.gd" id="2_k4j0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/hunter.gd" id="4_ivxnc"]
 [ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/tagged.gd" id="6_bmbmx"]
 [ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/hidden.gd" id="6_cicq2"]
+[ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/find.gd" id="7_ikfte"]
 [ext_resource type="Script" path="res://src/Nodes/Beehaviors/gdScripts/runner.gd" id="8_rkk2r"]
 
 [node name="PlayingTag" type="Node"]
@@ -29,5 +30,8 @@ script = ExtResource("3_nowe4")
 [node name="Hidden" type="Node" parent="Am I It ?/NotIt"]
 script = ExtResource("6_cicq2")
 
-[node name="Runner" type="Node" parent="Am I It ?/NotIt"]
+[node name="Pick Location" type="Node" parent="Am I It ?/NotIt"]
+script = ExtResource("7_ikfte")
+
+[node name="To Run To" type="Node" parent="Am I It ?/NotIt"]
 script = ExtResource("8_rkk2r")
